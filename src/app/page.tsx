@@ -1,5 +1,5 @@
-import LeakageCalculator from "@/components/LeakageCalculator";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return <LeakageCalculator />;
+  redirect("/dashboard");
 }

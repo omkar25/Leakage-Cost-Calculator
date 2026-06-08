@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Leakage Cost Calculator",
-  description: "Calculate the hidden cost of wasted time across your support team",
+  title: "CXPortal Knowledge OS",
+  description: "Your unified operational intelligence layer - one source of truth for every team",
 };
 
 export default function RootLayout({

@@ -14,11 +14,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const password = credentials?.password as string;
 
         // Hardcoded credentials check
-        if (username === "walters.obenson" && password === "walters.obenson2026") {
+        if (username === "walter" && password === "walter2026") {
           return {
             id: "1",
-            name: "Walters Obenson",
-            email: "walters.obenson@example.com",
+            name: "Walter",
+            email: "walter@example.com",
           };
         }
 
