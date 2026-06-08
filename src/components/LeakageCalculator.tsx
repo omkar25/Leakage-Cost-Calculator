@@ -5,9 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { formatCurrency, formatNumber } from "@/lib/utils";
-import { Calculator, Clock, Calendar, DollarSign, Users, TrendingDown, AlertTriangle, LogOut } from "lucide-react";
-import { signOut } from "next-auth/react";
-import { Button } from "@/components/ui/button";
+import { Calculator, Clock, Calendar, DollarSign, Users, TrendingDown, AlertTriangle } from "lucide-react";
 
 interface InputFieldProps {
   id: string;
@@ -57,7 +55,7 @@ interface MetricCardProps {
 
 function MetricCard({ title, value, description, icon, highlight = false }: MetricCardProps) {
   return (
-    <Card className={highlight ? "border-red-500 bg-red-50 dark:bg-red-950/20" : ""}>
+    <Card className={highlight ? "border-[#1b3a5c] bg-blue-50 dark:bg-blue-950/20" : ""}>
       <CardHeader className="pb-2">
         <CardDescription className="flex items-center gap-2">
           {icon}
@@ -65,7 +63,7 @@ function MetricCard({ title, value, description, icon, highlight = false }: Metr
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <p className={`text-2xl font-bold ${highlight ? "text-red-600 dark:text-red-400" : "text-zinc-900 dark:text-zinc-100"}`}>
+        <p className={`text-2xl font-bold ${highlight ? "text-[#1b3a5c] dark:text-blue-400" : "text-zinc-900 dark:text-zinc-100"}`}>
           {value}
         </p>
         <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">{description}</p>
@@ -100,21 +98,9 @@ export default function LeakageCalculator() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-950 dark:to-zinc-900 py-8 px-4">
       <div className="max-w-6xl mx-auto space-y-8">
-        {/* Header */}
-        <div className="flex justify-end">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => signOut({ callbackUrl: "/login" })}
-            className="flex items-center gap-2"
-          >
-            <LogOut className="h-4 w-4" />
-            Sign Out
-          </Button>
-        </div>
         <div className="text-center space-y-2">
           <div className="flex items-center justify-center gap-3">
-            <Calculator className="h-10 w-10 text-red-500" />
+            <Calculator className="h-10 w-10 text-[#1b3a5c]" />
             <h1 className="text-4xl font-bold text-zinc-900 dark:text-zinc-100">
               Leakage Cost Calculator
             </h1>
@@ -216,16 +202,16 @@ export default function LeakageCalculator() {
         </div>
 
         {/* Total Annual Leakage - Prominent Display */}
-        <Card className="border-2 border-red-500 bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30">
+        <Card className="border-2 border-[#1b3a5c] bg-gradient-to-r from-blue-50 to-sky-50 dark:from-blue-950/30 dark:to-sky-950/30">
           <CardContent className="py-8">
             <div className="text-center space-y-4">
               <div className="flex items-center justify-center gap-2">
-                <AlertTriangle className="h-6 w-6 text-red-500" />
+                <AlertTriangle className="h-6 w-6 text-[#1b3a5c]" />
                 <h2 className="text-xl font-semibold text-zinc-700 dark:text-zinc-300">
                   Total Annual Leakage
                 </h2>
               </div>
-              <p className="text-6xl font-bold text-red-600 dark:text-red-400">
+              <p className="text-6xl font-bold text-[#1b3a5c] dark:text-blue-400">
                 {formatCurrency(calculations.totalAnnualLeakage)}
               </p>
               <p className="text-zinc-600 dark:text-zinc-400 max-w-xl mx-auto">
