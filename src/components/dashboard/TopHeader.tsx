@@ -19,8 +19,8 @@ export default function TopHeader() {
   return (
     <header className="h-14 bg-white border-b border-gray-200 flex items-center justify-between px-6 shrink-0">
       <div>
-        <h2 className="text-sm font-semibold text-gray-900">
-          CXPortal Knowledge OS
+        <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
+          CXPORTAL KNOWLEDGE OS
         </h2>
         <p className="text-[11px] text-gray-500">
           Your unified operational intelligence layer

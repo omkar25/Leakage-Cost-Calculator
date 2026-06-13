@@ -96,7 +96,7 @@ export default function LeakageCalculator() {
   }, [hoursWasted, daysPerMonth, daysPerYear, hourlyRate, numAgents]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-950 dark:to-zinc-900 py-8 px-4">
+    <div className="min-h-screen bg-white py-8 px-4">
       <div className="max-w-6xl mx-auto space-y-8">
         <div className="text-center space-y-2">
           <div className="flex items-center justify-center gap-3">

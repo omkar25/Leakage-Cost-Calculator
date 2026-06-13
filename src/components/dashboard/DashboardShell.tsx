@@ -7,14 +7,20 @@ import UnifiedSearch from "./UnifiedSearch";
 import Sources from "./Sources";
 import Analytics from "./Analytics";
 import Settings from "./Settings";
+import AIAgents from "./AIAgents";
+import RevenueRecovery from "./RevenueRecovery";
+import WorkflowEngine from "./WorkflowEngine";
 import LeakageCalculator from "@/components/LeakageCalculator";
 import TopHeader from "./TopHeader";
 
 const panels: Record<ActivePanel, React.ReactNode> = {
   analytics: <Analytics />,
+  aiagents: <AIAgents />,
   assistant: <ChatAssistant />,
   search: <UnifiedSearch />,
   sources: <Sources />,
+  workflow: <WorkflowEngine />,
+  revenue: <RevenueRecovery />,
   leakage: <LeakageCalculator />,
   settings: <Settings />,
 };

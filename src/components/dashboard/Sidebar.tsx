@@ -1,12 +1,16 @@
 "use client";
 
 import {
-  MessageSquare,
-  Search,
-  Database,
+  Home,
+  BookOpen,
+  HelpCircle,
+  Bot,
+  Workflow,
   BarChart3,
-  Settings,
+  MessageSquare,
+  DollarSign,
   Calculator,
+  Settings,
 } from "lucide-react";
 
 export type ActivePanel =
@@ -14,6 +18,9 @@ export type ActivePanel =
   | "search"
   | "sources"
   | "analytics"
+  | "aiagents"
+  | "workflow"
+  | "revenue"
   | "leakage"
   | "settings";
 
@@ -23,62 +30,69 @@ interface SidebarProps {
 }
 
 const navItems: { id: ActivePanel; label: string; icon: React.ReactNode }[] = [
-  { id: "analytics", label: "Analytics", icon: <BarChart3 size={20} /> },
-  { id: "assistant", label: "Assistant", icon: <MessageSquare size={20} /> },
-  { id: "search", label: "Search", icon: <Search size={20} /> },
-  { id: "sources", label: "Sources", icon: <Database size={20} /> },
-  { id: "leakage", label: "Leakage Calc", icon: <Calculator size={20} /> },
-  { id: "settings", label: "Settings", icon: <Settings size={20} /> },
+  { id: "analytics", label: "Home", icon: <Home size={18} /> },
+  { id: "sources", label: "Knowledge", icon: <BookOpen size={18} /> },
+  { id: "search", label: "Questions", icon: <HelpCircle size={18} /> },
+  { id: "aiagents", label: "AI Agents", icon: <Bot size={18} /> },
+  { id: "workflow", label: "Workflow Engine", icon: <Workflow size={18} /> },
+  { id: "assistant", label: "Assistant", icon: <MessageSquare size={18} /> },
+  { id: "settings", label: "Analytics", icon: <BarChart3 size={18} /> },
+  { id: "revenue", label: "Revenue Recovery", icon: <DollarSign size={18} /> },
+  { id: "leakage", label: "Leakage Calculator", icon: <Calculator size={18} /> },
 ];
 
 export default function Sidebar({ activePanel, onPanelChange }: SidebarProps) {
+  const renderNavButton = (item: { id: ActivePanel; label: string; icon: React.ReactNode }) => (
+    <button
+      key={item.id}
+      onClick={() => onPanelChange(item.id)}
+      className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-[13px] font-medium transition-colors ${
+        activePanel === item.id
+          ? "bg-blue-600 text-white border border-blue-600"
+          : "text-white/60 hover:bg-white/5 hover:text-white/90 border border-transparent"
+      }`}
+    >
+      <span className={activePanel === item.id ? "text-white" : "text-white/40"}>
+        {item.icon}
+      </span>
+      <span className="hidden md:block">{item.label}</span>
+    </button>
+  );
+
   return (
-    <aside className="w-16 md:w-56 bg-[#1b3a5c] flex flex-col h-full shrink-0">
+    <aside className="w-16 md:w-52 bg-[#0b1929] flex flex-col h-full shrink-0">
       {/* Logo */}
-      <div className="h-14 flex items-center px-4 border-b border-white/10">
-        <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-sm">
-          CX
+      <div className="h-14 flex items-center px-2 border-b border-white/5">
+        <div className="px-3">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/cxportal_logo.jpeg"
+            alt="CXPortal Logo"
+            className="h-10 w-auto object-contain"
+          />
         </div>
-        <span className="ml-3 font-semibold text-white hidden md:block">
-          CXPortal
-        </span>
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 py-4 space-y-1 px-2">
-        {navItems.map((item) => (
-          <button
-            key={item.id}
-            onClick={() => onPanelChange(item.id)}
-            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-              activePanel === item.id
-                ? "bg-white/15 text-white"
-                : "text-white/70 hover:bg-white/10 hover:text-white"
-            }`}
-          >
-            <span
-              className={
-                activePanel === item.id ? "text-white" : "text-white/50"
-              }
-            >
-              {item.icon}
-            </span>
-            <span className="hidden md:block">{item.label}</span>
-          </button>
-        ))}
+      <nav className="flex-1 py-3 space-y-0.5 px-2 overflow-y-auto">
+        {navItems.map(renderNavButton)}
       </nav>
 
-      {/* User */}
-      <div className="p-4 border-t border-white/10">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-xs font-medium text-white">
-            AD
-          </div>
-          <div className="hidden md:block">
-            <p className="text-sm font-medium text-white">Admin</p>
-            <p className="text-xs text-white/60">admin@company.com</p>
-          </div>
-        </div>
+      {/* Settings */}
+      <div className="px-2 pb-3 border-t border-white/5 pt-2">
+        <button
+          onClick={() => onPanelChange("settings")}
+          className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-[13px] font-medium transition-colors ${
+            activePanel === "settings"
+              ? "bg-blue-600 text-white border border-blue-600"
+              : "text-white/60 hover:bg-white/5 hover:text-white/90 border border-transparent"
+          }`}
+        >
+          <span className={activePanel === "settings" ? "text-white" : "text-white/40"}>
+            <Settings size={18} />
+          </span>
+          <span className="hidden md:block">Settings</span>
+        </button>
       </div>
     </aside>
   );
