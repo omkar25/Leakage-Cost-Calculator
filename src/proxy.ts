@@ -6,8 +6,9 @@ export default function proxy(request: NextRequest) {
                        request.cookies.get("__Secure-authjs.session-token");
 
   const isLoginPage = request.nextUrl.pathname === "/login";
+  const isCalculatorPage = request.nextUrl.pathname.startsWith("/calculator");
 
-  if (!sessionToken && !isLoginPage) {
+  if (!sessionToken && !isLoginPage && !isCalculatorPage) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 

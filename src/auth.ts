@@ -35,7 +35,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     signIn: "/login",
   },
   callbacks: {
-    authorized: async ({ auth }) => {
+    authorized: async ({ auth, request }) => {
+      const isPublicRoute = request?.nextUrl?.pathname?.startsWith("/calculator");
+      if (isPublicRoute) return true;
       return !!auth;
     },
   },
